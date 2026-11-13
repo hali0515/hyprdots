@@ -26,7 +26,7 @@ curPos[1]="$(( ${curPos[1]} - ${monRes[4]} ))"
 
 if [ "${curPos[0]}" -ge "$((${monRes[0]} / 2))" ] ; then
     x_pos="east"
-    x_off="-$(( ${monRes[0]} - ${curPos[0]} - ${offRes[2]} ))"
+    x_off="$(( ${monRes[0]} - ${curPos[0]} - ${offRes[2]} ))" # rofi 2.x Wayland: east/south 偏移是从对边往里量, 取正值 (X11 时代是负值)
 else
     x_pos="west"
     x_off="$(( ${curPos[0]} - ${offRes[0]} ))"
@@ -34,7 +34,7 @@ fi
 
 if [ "${curPos[1]}" -ge "$((${monRes[1]} / 2))" ] ; then
     y_pos="south"
-    y_off="-$(( ${monRes[1]} - ${curPos[1]} - ${offRes[3]} ))"
+    y_off="$(( ${monRes[1]} - ${curPos[1]} - ${offRes[3]} ))" # rofi 2.x Wayland: east/south 偏移是从对边往里量, 取正值 (X11 时代是负值)
 else
     y_pos="north"
     y_off="$(( ${curPos[1]} - ${offRes[1]} ))"
